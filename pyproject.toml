@@ -1,0 +1,26 @@
+[project]
+name = "troetochie-mcp"
+version = "0.2.0"
+description = "MCP-сервер Троеточия: поиск по недавним чатам Claude Code и Codex и варианты ответа собеседнику"
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["mcp", "claude-code", "codex", "ai-keyboard", "troetochie"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = ["mcp>=2", "httpx>=0.27"]
+
+[project.urls]
+Homepage = "https://troetochie.online"
+Source = "https://github.com/troetochie-online/troetochie-mcp"
+
+[project.scripts]
+troetochie-mcp = "troetochie_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8"]
