@@ -2,8 +2,7 @@
 
 # Троеточие MCP
 
-[![PyPI](https://img.shields.io/pypi/v/troetochie-mcp?color=5b4bdb)](https://pypi.org/project/troetochie-mcp/)
-[![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://pypi.org/project/troetochie-mcp/)
+[![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://github.com/troetochie-online/troetochie-mcp)
 [![MCP](https://img.shields.io/badge/MCP-server-1C1917)](https://modelcontextprotocol.io)
 [![Сайт](https://img.shields.io/badge/сайт-troetochie.online-5b4bdb)](https://troetochie.online)
 
@@ -36,7 +35,7 @@ MCP-сервер [Троеточия](https://troetochie.online), AI-клави�
 
 ## Установка
 
-Нужен [uv](https://docs.astral.sh/uv/getting-started/installation/):
+Нужен [uv](https://docs.astral.sh/uv/getting-started/installation/). Он сам скачает сервер из этого репозитория и будет запускать свежую версию:
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -46,7 +45,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 <summary><b>Claude Code</b></summary>
 
 ```bash
-claude mcp add troetochie -- uvx troetochie-mcp
+claude mcp add troetochie -- uvx --from git+https://github.com/troetochie-online/troetochie-mcp troetochie-mcp
 ```
 
 Проверить: `claude mcp list` или `/mcp` внутри сессии.
@@ -56,7 +55,7 @@ claude mcp add troetochie -- uvx troetochie-mcp
 <summary><b>Codex</b></summary>
 
 ```bash
-codex mcp add troetochie -- uvx troetochie-mcp
+codex mcp add troetochie -- uvx --from git+https://github.com/troetochie-online/troetochie-mcp troetochie-mcp
 ```
 </details>
 
@@ -70,7 +69,7 @@ codex mcp add troetochie -- uvx troetochie-mcp
   "mcpServers": {
     "troetochie": {
       "command": "uvx",
-      "args": ["troetochie-mcp"]
+      "args": ["--from", "git+https://github.com/troetochie-online/troetochie-mcp", "troetochie-mcp"]
     }
   }
 }
