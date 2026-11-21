@@ -9,6 +9,7 @@ import hashlib
 import time
 import json
 import os
+import re
 import uuid
 from typing import List, Literal
 from pathlib import Path
@@ -22,6 +23,8 @@ from troetochie_mcp.auth import TokenCache
 from troetochie_mcp.privacy import redact
 
 API = os.environ.get("TROETOCHIE_API", "https://api.troetochie.online").rstrip("/")
+# Откуда пришёл пользователь, например TROETOCHIE_SOURCE=stepik в команде установки из урока
+SOURCE = re.sub(r"[^a-z0-9_-]", "", os.environ.get("TROETOCHIE_SOURCE", "").strip().lower())[:40]
 Tone = Literal["confident", "calm", "short", "humor", "flirt", "work"]
 
 mcp = MCPServer("troetochie")
@@ -38,7 +41,8 @@ def _track(tool: str, ok: bool, started: float, **props) -> None:
         with httpx.Client(timeout=3) as client:
             _post(client, "/v1/events",
                 json={"session": SESSION, "events": [{"name": "mcp_tool_called", "ts": int(time.time() * 1000),
-                      "props": {"tool": tool, "ok": ok, "ms": int((time.monotonic() - started) * 1000), **props}}]},
+                      "props": {"tool": tool, "ok": ok, "ms": int((time.monotonic() - started) * 1000),
+                                **({"source": SOURCE} if SOURCE else {}), **props}}]},
             )
     except Exception:
         pass

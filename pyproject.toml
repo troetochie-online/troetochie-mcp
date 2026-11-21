@@ -1,6 +1,6 @@
 [project]
 name = "troetochie-mcp"
-version = "0.2.0"
+version = "0.2.1"
 description = "MCP-сервер Троеточия: поиск по недавним чатам Claude Code и Codex и варианты ответа собеседнику"
 readme = "README.md"
 requires-python = ">=3.10"

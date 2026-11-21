@@ -96,6 +96,7 @@ codex mcp add troetochie -- uvx --from git+https://github.com/troetochie-online/
 | Переменная | По умолчанию | Зачем |
 |---|---|---|
 | `TROETOCHIE_API` | `https://api.troetochie.online` | Другой адрес API, например для своего стенда. |
+| `TROETOCHIE_SOURCE` | пусто | Метка, откуда вы пришли, например `stepik`. Уходит вместе с событием вызова. |
 
 ## Клавиатура Троеточие
 
